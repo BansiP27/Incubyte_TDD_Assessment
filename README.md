@@ -1,27 +1,13 @@
-# IncubyteTDDAssessment
+String Calculator TDD Kata Tips: Start with the simplest test case of an empty string and move to one and two numbers. Remember to solve problems in a simple manner so that you force yourself to write tests you did not think about. Remember to refactor after each passing test. Steps: Create a simple String calculator with a method signature like this:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.7.
+int add(string numbers) Input: a string of comma-separated numbers Output: an integer, sum of the numbers Examples:
 
-## Development server
+Input: “”, Output: 0 Input: “1”, Output: 1 Input: “1,5”, Output: 6 Allow the add method to handle any amount of numbers.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Allow the add method to handle new lines between numbers (instead of commas). ("1\n2,3" should return 6)
 
-## Code scaffolding
+Support different delimiters:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To change the delimiter, the beginning of the string will contain a separate line that looks like this: "//[delimiter]\n[numbers…]". For example, "//;\n1;2" where the delimiter is ";" should return 3. Calling add with a negative number will throw an exception: "negative numbers not allowed <negative_number>".
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+If there are multiple negative numbers, show all of them in the exception message, separated by commas.
